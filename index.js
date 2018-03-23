@@ -4,7 +4,6 @@ var winston = require('winston');
 require('winston-elasticsearch');
 
 var elasticsearch = require('elasticsearch');
-var format = 'cloudfront';
 
 var client = new elasticsearch.Client({
   host: process.env.ES_HOST,
@@ -17,11 +16,11 @@ var transport = new winston.transports.Elasticsearch({
 });
 
 var options = {
-  format: format,
+  format: process.env.FORMAT,
   transport: transport,
   reformatter: function(data){
     data.environment = process.env.STAGE;
-    data.origin = "cloudfront";
+    data.origin = process.env.FORMAT;
     return data;
   }
 };
