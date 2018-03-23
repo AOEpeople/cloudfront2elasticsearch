@@ -1,16 +1,20 @@
 sudo: false
 language: javascript
+
 script:
 - npm install
+
 notifications:
   email:
     recipients:
     - travisci@fabrizio-branca.de
     on_success: always
     on_failure: always
+
 before_deploy:
 - ls
 - zip --verbose -r index.zip index.js node_modules/
+
 deploy:
   provider: releases
   api_key:
@@ -18,3 +22,5 @@ deploy:
   file: index.zip
   on:
     repo: AOEpeople/cloudfront2elasticsearch
+    branch: master
+    tags: true
