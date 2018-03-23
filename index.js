@@ -20,6 +20,8 @@ var options = {
   format: format,
   transport: transport,
   reformatter: function(data){
+    data.environment = process.env.STAGE;
+    data._type = "cloudfront";
     return data;
   }
 };
