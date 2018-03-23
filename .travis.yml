@@ -9,7 +9,8 @@ notifications:
     on_success: always
     on_failure: always
 before_deploy:
-- zip -r index.zip index.js node_modules/
+- ls
+- zip --verbose -r index.zip index.js node_modules/
 deploy:
   provider: releases
   api_key:
@@ -17,5 +18,3 @@ deploy:
   file: index.zip
   on:
     repo: AOEpeople/cloudfront2elasticsearch
-    branch: master
-    tags: true
