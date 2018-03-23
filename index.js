@@ -21,7 +21,7 @@ var options = {
   transport: transport,
   reformatter: function(data){
     data.environment = process.env.STAGE;
-    data._type = "cloudfront";
+    data.origin = "cloudfront";
     return data;
   }
 };
