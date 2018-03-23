@@ -22,5 +22,4 @@ deploy:
   file: index.zip
   on:
     repo: AOEpeople/cloudfront2elasticsearch
-    branch: master
     tags: true
