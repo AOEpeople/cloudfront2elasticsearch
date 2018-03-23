@@ -1,0 +1,13 @@
+{
+  "name": "cfn2es",
+  "version": "0.1.0",
+  "description": "AWS lambda for parsing S3 / CloudFront logs stored on S3 and pushes them into ElasticSearch.",
+  "main": "index.js",
+  "dependencies": {
+    "elasticsearch": "^14.2.1",
+    "s3-to-logstore": "^0.1.0",
+    "split": "^1.0.0",
+    "winston": "^2.2.0",
+    "winston-elasticsearch": "^0.5.7"
+  }
+}
