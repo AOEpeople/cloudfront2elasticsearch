@@ -1,24 +1,21 @@
 sudo: false
 language: javascript
-
 script:
 - npm install
-
 notifications:
   email:
     recipients:
     - travisci@fabrizio-branca.de
     on_success: always
     on_failure: always
-
 before_deploy:
 - zip -r index.zip index.js node_modules/
 deploy:
   provider: releases
   api_key:
-    secure: PRTuXlZ9Y83g22H+nukMCpK2HmchmpNNJIS7aT3ywxXOV8qbtmGITEBKe0RgkFo4odANGy4P762RpmOxWY+e081q/4gVztr+fjTmLjzvRSGvD5dPs8j298uedJ25zdo57Raq5E0WC3FEkar91SIk37S73IvDhtzKFMJAkKPSmZ5vYFMRu0CUIQ2wN/T/gMnMytjQbcgVn1vGai3xilN/YNukuv4iuj1aBIEZXnJNKUkz6gpo3nNqHb8PHoYkv7SfxMwEda7joYNFu4p6eU5mlwHoY1gv1iUNKHLRYvFOQAXthbbp2NxImHehtxOy1UFHiz+onL1nTciBgQbjysQgKpZz0ByEB7OKGu/59x1P2F2g9cxUSpqjx4i4M9bI7ALweE7BnyfZj4vHW57kFOmsGlAwaEsJIdJwZS8PXHDy575x3HGY2HdXVBySBRHBbyjUdlKnhp42W8R9+wA56wBK836DBlFFJgxRBdViuZsu08mcR4VnsPMU8oykhfhI8QNCnSV8A5/Hcz2NGfXJi5UV9MMMXfiPLYfe4K2nABBiWu7P6gxQwjPbz4N3CipzFD0cOakGanWnjDIsshTqA/Tn+pl7BGbqfkXciZe5hUuEbhGGk/Jj8i5IsU7ZipArK1sRCMwSSpSEqKQ9EvTxlgceiNw0LBVWrsBxGOvUN88GV3I=
+    secure: THhqZddQn/0rJTNOqbCGegKawrSSYA/YiFPXRVX5o/8NRKnH58NeFsIssCrSQY6C6agfHP4fLmlons/NXTyr0RgjmoRV7o/Fe8dJbipK5DNL4800U/uOwXDgveT03ehXKRfGpR8BR+Dw6GCzCBIezgMwjbbaAGVNGah/RfO46yfqJYVICYT6zeYF3ZFLZAEZGW8DcxWV5Jv11clspZx7Hzmf3uf9xKbta2B/eI7BSGs7t29TMmvRP0xRS9UpJxtosczXzXIREzZ0PuyPdZrcld+0/yXJwUpIDgC+cfmxDK6JCVqYyUCoj4UK4OaCvOEJL93Li7oiufY2tfuBrW7vfcGSjaPw6ZgWmdvm7OHaqmhmIQ98e6ZnrO/8qJZqeM8ChvSzrWpXglBwEVAdG8iv8QDL+TVe7/letvnA9aB8mLJ0baLfvY/ujTbx+UlnJdo7k5i4nJ/vaf/vbdEqdlYHF26I02NnOrlbhDInvCExUw0eRcs7uRN/avF5VO1aQ7Xhe8r0tY9f6OAIYMVI9VUDXOZwgcViuAsMVCyKwjYnMbUVnm0FMPiaoxe1a28gPewKSmneJgwPmjka5/FH6NOKZLkBXid8Z7sTtbePl4yRvCgYDvVF5gGaF1Q/H4AUbuTsfr+g/GptDDMkeYk2hXF3XLzFWCnDy9o0O0UzUt3lkjo=
   file: index.zip
   on:
     repo: AOEpeople/cloudfront2elasticsearch
     branch: master
-    tags: false
+    tags: true
