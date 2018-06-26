@@ -16,7 +16,7 @@ var client = new elasticsearch.Client({
 exports.handler = function(event, context, callback) {
     var srcBucket = event.Records[0].s3.bucket.name;
     var srcKey = event.Records[0].s3.object.key;
-
+    
     async.waterfall([
         function fetchLogFromS3(next){
             console.log('Fetching compressed log from S3...');
