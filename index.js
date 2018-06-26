@@ -50,7 +50,7 @@ exports.handler = function(event, context, callback) {
             });
 
             client.bulk({
-              index: process.env.ES_INDEXPREFIX,
+              index: process.env.ES_INDEXPREFIX + '-' +((new Date()).toJSON().slice(0, 10).replace(/[-T]/g, '.')),
               type: 'log',
               body: bulk
             }, function(err, resp, status) {
@@ -68,6 +68,6 @@ exports.handler = function(event, context, callback) {
         } else {
             console.log('Successfully send data.');
         }
-        callback(null, 'Done');
+        callback(null, "success");
     });
 };
