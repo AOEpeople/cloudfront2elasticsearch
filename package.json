@@ -6,6 +6,8 @@
   "dependencies": {
     "async": "^2.6.1",
     "cloudfront-log-parser": "^1.0.0",
-    "elasticsearch": "^14.2.1"
+    "elasticsearch": "^14.2.1",
+    "aws-sdk": "^2.265.1",
+    "zlib": "^1.0.5"
   }
 }
