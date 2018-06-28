@@ -37,7 +37,7 @@ exports.handler = function(event, context, callback) {
             var records;
             CloudFrontParser.parse(json, { format: 'web' }, function (err, accesses) {
               if(err){
-                console.log(err);
+                return callback(err);
               } else {
                 records = accesses;
               }
