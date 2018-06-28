@@ -4,10 +4,10 @@
   "description": "AWS lambda for parsing S3 / CloudFront logs stored on S3 and pushes them into ElasticSearch.",
   "main": "index.js",
   "dependencies": {
+    "async": "^2.6.1",
+    "cloudfront-log-parser": "^1.0.0",
     "elasticsearch": "^14.2.1",
-    "s3-to-logstore": "^0.1.0",
-    "split": "^1.0.0",
-    "winston": "^2.2.0",
-    "winston-elasticsearch": "^0.5.7"
+    "aws-sdk": "^2.265.1",
+    "zlib": "^1.0.5"
   }
 }
