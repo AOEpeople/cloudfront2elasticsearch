@@ -61,14 +61,15 @@ exports.handler = function(event, context, callback) {
               console.log(resp);
               next();
             });
-            callback(null, "success");
             console.log('CloudFront parsed:', records);
         }
     ], function (err) {
         if (err) {
             console.error('Failed to send data: ', err);
+            return callback(err);
         } else {
             console.log('Successfully send data.');
+            callback(null, "success");
         }
     });
 };
