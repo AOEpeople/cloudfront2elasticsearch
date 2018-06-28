@@ -16,7 +16,7 @@ var client = new elasticsearch.Client({
 exports.handler = function(event, context, callback) {
     var srcBucket = event.Records[0].s3.bucket.name;
     var srcKey = event.Records[0].s3.object.key;
-    
+
     async.waterfall([
         function fetchLogFromS3(next){
             console.log('Fetching compressed log from S3...');
@@ -56,10 +56,12 @@ exports.handler = function(event, context, callback) {
             }, function(err, resp, status) {
               if(err) {
                 console.log('Error: ', err);
+                return callback(err);
               }
               console.log(resp);
               next();
             });
+            callback(null, "success");
             console.log('CloudFront parsed:', records);
         }
     ], function (err) {
@@ -68,6 +70,5 @@ exports.handler = function(event, context, callback) {
         } else {
             console.log('Successfully send data.');
         }
-        callback(null, "success");
     });
 };
