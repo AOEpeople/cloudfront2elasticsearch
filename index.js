@@ -9,7 +9,7 @@ var s3 = new aws.S3();
 
 var client = new elasticsearch.Client({
   host: process.env.ES_HOST,
-  log: 'trace',
+  log: 'error',
   keepAlive: false
 });
 
@@ -58,10 +58,10 @@ exports.handler = function(event, context, callback) {
                 console.log('Error: ', err);
                 return callback(err);
               }
-              console.log(resp);
+              // console.log(resp);
               next();
             });
-            console.log('CloudFront parsed:', records);
+            // console.log('CloudFront parsed:', records);
         }
     ], function (err) {
         if (err) {
