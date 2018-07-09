@@ -13,6 +13,17 @@ var client = new elasticsearch.Client({
   keepAlive: false
 });
 
+
+function get_date(record_date, record_time){
+  var year = record_date.split('-')[0];
+  var month = record_date.split('-')[1];
+  var day = record_date.split('-')[2];
+  var hours = record_time.split(':')[0];
+  var minutes = record_time.split(':')[1];
+  var seconds = record_time.split(':')[2];
+  return new Date(year, month, day, hours, minutes, seconds, 0).toISOString();
+}
+
 exports.handler = function(event, context, callback) {
     var srcBucket = event.Records[0].s3.bucket.name;
     var srcKey = event.Records[0].s3.object.key;
@@ -45,8 +56,8 @@ exports.handler = function(event, context, callback) {
 
             var bulk = [];
             records.forEach(function(record) {
-              record["@timestamp"] = new Date().toISOString();
-              record["environment"] = process.env.STAGE;
+              record["@timestamp"] = get_date(record.date, record.time);
+              record["stage"] = process.env.STAGE;
               bulk.push({"index": {}})
               bulk.push(record);
             });
