@@ -45,6 +45,8 @@ exports.handler = function(event, context, callback) {
 
             var bulk = [];
             records.forEach(function(record) {
+              record["@timestamp"] = new Date().toISOString();
+              record["environment"] = process.env.STAGE;
               bulk.push({"index": {}})
               bulk.push(record);
             });
