@@ -21,7 +21,7 @@ function get_date(record_date, record_time){
   var hours = record_time.split(':')[0];
   var minutes = record_time.split(':')[1];
   var seconds = record_time.split(':')[2];
-  return new Date(year, month, day, hours, minutes, seconds, 0).toISOString();
+  return new Date(year, month - 1, day, hours, minutes, seconds, 0).toISOString();
 }
 
 exports.handler = function(event, context, callback) {
@@ -58,7 +58,7 @@ exports.handler = function(event, context, callback) {
             records.forEach(function(record) {
               record["@timestamp"] = get_date(record.date, record.time);
               record["environment"] = process.env.STAGE;
-              bulk.push({"index": {}}); 
+              bulk.push({"index": {}});
               bulk.push(record);
             });
 
